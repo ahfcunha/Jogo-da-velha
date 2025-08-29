@@ -1,8 +1,7 @@
-import java.beans.Visibility;
 import java.util.Scanner;
 
 public class Partida {
-    String jogadorAtual;
+    String jogadorAtual = "X";
     Tabuleiro t = new Tabuleiro();
     Scanner s = new Scanner(System.in);
     int linhaEscolhida;
@@ -31,5 +30,18 @@ public class Partida {
             tabuleiro[linhaEscolhida][colunaEscolhida] = jogadorAtual;
         }
         return tabuleiro;
+    }
+    
+    public void jogarPartida(){
+        while(rodada < 10){
+            alternanciaRodadas();
+            if(v.verificarVitoria(alternanciaRodadas()) == true){
+                System.out.println("VENCEDOR: " + jogadorAtual);
+                break;
+            }
+        }
+        if(v.verificarVitoria(alternanciaRodadas()) == false){
+            System.out.println("Empate");
+        }
     }
 }
