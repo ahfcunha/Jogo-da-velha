@@ -1,3 +1,4 @@
+import java.beans.Visibility;
 import java.util.Scanner;
 
 public class Partida {
@@ -6,8 +7,10 @@ public class Partida {
     Scanner s = new Scanner(System.in);
     int linhaEscolhida;
     int colunaEscolhida;
+    int rodada = 1;
+    Vitoria v = new Vitoria();
 
-    public void alternanciaRodadas(){
+    public String[][] alternanciaRodadas(){
         String[][] tabuleiro = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
         if(jogadorAtual.equals("X")){
             jogadorAtual = "O";
@@ -27,5 +30,6 @@ public class Partida {
         else{
             tabuleiro[linhaEscolhida][colunaEscolhida] = jogadorAtual;
         }
+        return tabuleiro;
     }
 }
