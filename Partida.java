@@ -8,9 +8,10 @@ public class Partida {
     int colunaEscolhida;
     int rodada = 1;
     Vitoria v = new Vitoria();
+    String[][] tabuleiro = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
 
-    public String[][] alternanciaRodadas(){
-        String[][] tabuleiro = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
+    public void alternanciaRodadas(){
+        
         if(jogadorAtual.equals("X")){
             jogadorAtual = "O";
         }
@@ -27,20 +28,19 @@ public class Partida {
             System.out.println("\nERRO! Este esaço já está ocupado.");
         }
         else{
-            tabuleiro[linhaEscolhida][colunaEscolhida] = jogadorAtual;
+            tabuleiro[linhaEscolhida - 1][colunaEscolhida - 1] = jogadorAtual;
         }
-        return tabuleiro;
     }
     
     public void jogarPartida(){
         while(rodada < 10){
             alternanciaRodadas();
-            if(v.verificarVitoria(alternanciaRodadas()) == true){
+            if(v.verificarVitoria(tabuleiro) == true){
                 System.out.println("VENCEDOR: " + jogadorAtual);
                 break;
             }
         }
-        if(v.verificarVitoria(alternanciaRodadas()) == false){
+        if(v.verificarVitoria(tabuleiro) == false){
             System.out.println("Empate");
         }
     }
