@@ -1,4 +1,9 @@
+import java.util.Scanner;
+
 public class Tabuleiro{
+    Scanner s = new Scanner(System.in);
+    
+
     public void exibirTabuleiro(String[][] tabuleiro) {
         for(int i = 0; i < tabuleiro.length; i++){
             System.out.println(String.join(" | ", tabuleiro[i]));
@@ -7,6 +12,12 @@ public class Tabuleiro{
                 System.out.println("---------");
             }
         }
+    }
+
+    public int exibirMenu(){
+        System.out.println("***JOGO DA VELHA***");
+        System.out.println("\nNúmeoro de jogadores (1 ou 2): ");
+        return s.nextInt();
     }
 }
 
