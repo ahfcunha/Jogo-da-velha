@@ -58,8 +58,11 @@ public class Partida {
         if(tentarGanhar(simboloComputador, tabuleiro)){
             return;
         }
-        if(tentarBloquear(simboloJogador, simboloComputador, tabuleiro)){
+        else if(tentarBloquear(simboloJogador, simboloComputador, tabuleiro)){
             return;
+        }
+        else if(tabuleiro[1][1].equals(" ")){
+            tabuleiro[1][1] = simboloComputador;
         }
         while(!escolhaComp){
             linhaEscolhidaComp = r.nextInt(3);
