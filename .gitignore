@@ -1,0 +1,16 @@
+# Ignora arquivos de compilação e pastas geradas pelo Java
+*.class
+bin/
+target/
+
+# Ignora a pasta de metadados do VS Code
+.vscode/
+
+# Ignora arquivos de log
+*.log
+logs/
+
+# Ignora arquivos temporários e do sistema operacional
+tmp/
+.DS_Store
+Thumbs.db
