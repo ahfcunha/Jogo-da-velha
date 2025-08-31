@@ -103,8 +103,17 @@ public class Partida {
     }
 
     public void alternanciaRodadasComp(){
-        System.out.println("\nQual símbolo você deseja (X ou O): ");
-        simboloEscolhido = s.next().toUpperCase();
+        entradaValida = false;
+        while(!entradaValida){
+            System.out.println("\nQual símbolo você deseja (X ou O): ");
+            simboloEscolhido = s.next().toUpperCase();
+            if(simboloEscolhido.equals("X") || simboloEscolhido.equals("O")){
+                entradaValida = true;
+            }
+            else{
+                System.out.println("Entrada inválida! Escolha novamente.");
+            }
+        }
         String simboloComp = simboloEscolhido.equals("X") ? "O" : "X";
         
         while(rodada < 10){
