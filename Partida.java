@@ -58,11 +58,12 @@ public class Partida {
         if(tentarGanhar(simboloComputador, tabuleiro)){
             return;
         }
-        else if(tentarBloquear(simboloJogador, simboloComputador, tabuleiro)){
+        if(tentarBloquear(simboloJogador, simboloComputador, tabuleiro)){
             return;
         }
-        else if(tabuleiro[1][1].equals(" ")){
+        if(tabuleiro[1][1].equals(" ")){
             tabuleiro[1][1] = simboloComputador;
+            return;
         }
         while(!escolhaComp){
             linhaEscolhidaComp = r.nextInt(3);
@@ -118,23 +119,28 @@ public class Partida {
             }
         }
         String simboloComp = simboloEscolhido.equals("X") ? "O" : "X";
-        
+        jogadorAtual = simboloEscolhido;
+
         while(rodada < 10){
-            t.exibirTabuleiro(tabuleiro);
-            escolhaJogador(simboloEscolhido);
-            rodada += 1;
-            if(v.verificarVitoria(tabuleiro, simboloEscolhido)){
+            if(jogadorAtual.equals(simboloEscolhido)){
                 t.exibirTabuleiro(tabuleiro);
-                System.out.println("MEUS PARABÉNS VOCÊ VENCEU!!!");
-                return;
+                escolhaJogador(simboloEscolhido);
+                if(v.verificarVitoria(tabuleiro, simboloEscolhido)){
+                    t.exibirTabuleiro(tabuleiro);
+                    System.out.println("MEUS PARABÉNS VOCÊ VENCEU!!!");
+                    return;
+                }
             }
-            jogadaInteligente(simboloComp, simboloEscolhido, tabuleiro);
-            rodada += 1;
-            if(v.verificarVitoria(tabuleiro, simboloComp)){
-                t.exibirTabuleiro(tabuleiro);
-                System.out.println("QUE PENA, VOCÊ FOI DERROTADO!!!");
-                return;
+            else{
+                jogadaInteligente(simboloComp, simboloEscolhido, tabuleiro);
+                if(v.verificarVitoria(tabuleiro, simboloComp)){
+                    t.exibirTabuleiro(tabuleiro);
+                    System.out.println("QUE PENA, VOCÊ FOI DERROTADO!!!");
+                    return;
+                }
             }
+            rodada ++;
+            jogadorAtual = jogadorAtual.equals("X") ? "O" : "X";
         }
         t.exibirTabuleiro(tabuleiro);
         System.out.println("DEU VELHA!!!");
