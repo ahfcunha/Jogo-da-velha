@@ -48,10 +48,7 @@ public class Partida {
             }
             rodada += 1;
         }
-        if(v.verificarVitoria(tabuleiro, "X") == false && v.verificarVitoria(tabuleiro, "O")){
-            t.exibirTabuleiro(tabuleiro);
-            System.out.println("Deu velha");
-        }
+        System.out.println("Deu velha");
     }
 
     public void jogadaInteligente(String simboloComputador, String simboloJogador, String[][] tabuleiro){
@@ -65,6 +62,7 @@ public class Partida {
             tabuleiro[1][1] = simboloComputador;
             return;
         }
+        escolhaComp = false;
         while(!escolhaComp){
             linhaEscolhidaComp = r.nextInt(3);
             colunaEscolhidaComp = r.nextInt(3);
@@ -119,7 +117,7 @@ public class Partida {
             }
         }
         String simboloComp = simboloEscolhido.equals("X") ? "O" : "X";
-        jogadorAtual = simboloEscolhido;
+        jogadorAtual = "X";
 
         while(rodada < 10){
             if(jogadorAtual.equals(simboloEscolhido)){
